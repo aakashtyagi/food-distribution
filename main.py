@@ -59,14 +59,14 @@ def foodQuantities(foodRatios, numberOfMeals):
 		# there is a largest remainder(s)
 		else:
 			# find keys with largest remainder values
-			keysWithMaxRemainder = [k for k, v in remainderValues.items() if v == maxRemainder]
 			# distribute the remainingMeals among those keys
-			for item in keysWithMaxRemainder:
-				if remainingMeals > 0:
-					quantities[item] += 1
-					remainingMeals = remainingMeals - 1
-				else:
-					break
+			for key, value in remainderValues.items():
+				if value == maxRemainder:
+					if remainingMeals > 0:
+						quantities[key] += 1
+						remainingMeals = remainingMeals - 1
+					else:
+						break
 
 		return quantities
 	else:
